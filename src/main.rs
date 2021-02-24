@@ -10,12 +10,12 @@ fn main() {
     // Example: generate two puzzles and homomorphicly add them
     let pp= LHP::setup::gen(20, 10.to_biguint().unwrap()); // generate parameters that uses 20 bit representation, time parameter is 10
     let z1 = LHP::generate::gen(&pp, 434.to_biguint().unwrap()); // secret for the first puzzle is 434
-    let s=LHP::solve::solve(&pp,&z1);
+    let mut s=LHP::solve::solve(&pp,&z1);
     println!("First puzzle solved. Secret: {}",s);
     let z2 = LHP::generate::gen(&pp, 10.to_biguint().unwrap()); // secret for the first puzzle 10
-    let s=LHP::solve::solve(&pp,&z2);
+    s=LHP::solve::solve(&pp,&z2);
     println!("Second puzzle solved. Secret: {}",s);
     let z3 = LHP::lin_eval::add(&pp, &z1, &z2); // secret for the third puzzle 444
-    let s=LHP::solve::solve(&pp,&z3);
+    s=LHP::solve::solve(&pp,&z3);
     println!("Third (homomorphic evaluation of the previous puzzles) puzzle solved. Secret: {}",s);
 }
