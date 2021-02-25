@@ -1,6 +1,6 @@
 pub struct Params {
-    pub T: num_bigint::BigUint,
-    pub N : num_bigint::BigUint,
+    pub t: num_bigint::BigUint,
+    pub n : num_bigint::BigUint,
     pub g : num_bigint::BigUint,
     pub h : num_bigint::BigUint,
 }
